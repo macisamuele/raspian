@@ -1,0 +1,5 @@
+os: linux
+arch: arm64
+
+script:
+- make create-default-image

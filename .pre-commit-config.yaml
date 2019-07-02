@@ -1,0 +1,42 @@
+repos:
+- repo: git://github.com/pre-commit/pre-commit-hooks
+  rev: v1.2.3
+  hooks:
+  - id: autopep8-wrapper
+    args:
+    - -i
+    - --ignore=E309,E501
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: check-json
+  - id: check-xml
+  - id: end-of-file-fixer
+  - id: debug-statements
+  - id: fix-encoding-pragma
+  - id: flake8
+  - id: forbid-new-submodules
+  - id: mixed-line-ending
+    args:
+    - --fix
+    - lf
+  - id: pyflakes
+  - id: pretty-format-json
+    args:
+    - --autofix
+    - --indent
+    - '2'
+  - id: sort-simple-yaml
+  - id: trailing-whitespace
+- repo: git://github.com/asottile/reorder_python_imports
+  rev: v1.0.1
+  hooks:
+  - id: reorder-python-imports
+- repo: local
+  hooks:
+  - id: shell-check
+    name: shell-check
+    entry: koalaman/shellcheck:latest
+    language: docker_image
+    args:
+    - -x
+    files: ^.+\.sh$
